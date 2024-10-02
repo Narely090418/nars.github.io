@@ -1,0 +1,166 @@
+  /* Global Styles */
+  * 
+{
+    margin:  0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body 
+{
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/fs/d58ee931038877.572940c4df0e9.jpg");
+}
+
+header 
+{
+    text-align: center;
+    margin-top: 30px;
+}
+
+:root 
+{
+    --card-height: 300px;
+    --card-width: calc(var(--card-height) / 1.5);
+  }
+
+ 
+ /* Card container using flexbox */
+.card-container 
+{
+    display: flex;             /* Enables flexbox layout */
+    justify-content: center;   /* Centers cards horizontally */
+    align-items: center;       /* Aligns cards vertically */
+    flex-wrap: wrap;           /* Allows wrapping if needed */
+    gap: 20px;                 /* Space between cards */
+    width: 80%;
+    padding: 20px;
+}
+
+.card 
+{
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 36px;
+    perspective: 2500px;
+    transition: transform 0.5s;
+}
+
+.cover-image
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+.wrapper 
+{
+    transition: all 0.5s;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+  
+.card:hover .wrapper 
+{
+    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+}
+  
+.wrapper::before,
+.wrapper::after 
+{
+    content: "";
+    opacity: 0;
+    width: 100%;
+    height: 80px;
+    transition: all 0.5s;
+    position: absolute;
+    left: 0;
+}
+.wrapper::before 
+{
+    top: 0;
+    height: 100%;
+    background-image: linear-gradient(
+      to top,
+      transparent 46%,
+      rgba(12, 13, 19, 0.5) 68%,
+      rgba(12, 13, 19) 97%
+    );
+}
+.wrapper::after
+{
+    bottom: 0;
+    opacity: 1;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 46%,
+      rgba(12, 13, 19, 0.5) 68%,
+      rgba(12, 13, 19) 97%
+    );
+}
+  
+.card:hover .wrapper::before,
+.wrapper::after 
+{
+    opacity: 1;
+}
+  
+.card:hover .wrapper::after
+{
+    height: 120px;
+}
+  
+.character
+{
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    position: absolute;
+    z-index: -1;
+}
+  
+.card:hover .character
+{
+    opacity: 1;
+    transform: translate3d(0%, -30%, 100px);
+}
+  
+h3
+{
+    margin-top: 10px;
+    color:black;
+}
+
+/* Footer Styles */
+footer
+{
+    background-color:black;
+    color: white;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 15px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+footer p
+{
+    margin: 0;
+}
+
